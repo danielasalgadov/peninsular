@@ -1,3 +1,9 @@
+
+/* Import Google Fonts for Peninsular Brand */
+@import url('https://fonts.googleapis.com/css2?family=Onest:wght@100;200;300;400;500;600;700;800;900&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Staatliches&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Shrikhand&display=swap');
+
 @import "tailwindcss";
 @import "tw-animate-css";
 
@@ -117,4 +123,91 @@
   body {
     @apply bg-background text-foreground;
   }
+}
+
+
+
+
+/* Peninsular Brand Variables */
+:root {
+  /* Brand Colors */
+  --pastel-grey-orange: #d8c09a;
+  --grey-brown: #6f6648;
+  --dark-olive: #5c622a;
+  --azure: #104e7f;
+  --orange: #fff0d3;
+  --dark-grey-brown: #553f24;
+  --grey-yellow: #bdb499;
+  
+  /* Typography */
+  --font-primary: 'Onest', sans-serif;
+  --font-headers: 'Staatliches', cursive;
+  --font-subheaders: 'Shrikhand', cursive;
+}
+
+/* Peninsular Typography */
+.peninsular-title {
+  font-family: var(--font-headers);
+  font-weight: 400;
+  color: var(--azure);
+  letter-spacing: 0.05em;
+}
+
+.peninsular-subtitle {
+  font-family: var(--font-primary);
+  font-weight: 100;
+  color: var(--grey-brown);
+  letter-spacing: 0.1em;
+}
+
+.peninsular-subheader {
+  font-family: var(--font-subheaders);
+  font-weight: 400;
+  color: var(--grey-brown);
+}
+
+.peninsular-body {
+  font-family: var(--font-primary);
+  font-weight: 400;
+  line-height: 1.6;
+  color: var(--dark-grey-brown);
+}
+
+/* Peninsular Components */
+.peninsular-card {
+  background: linear-gradient(135deg, var(--orange) 0%, var(--pastel-grey-orange) 100%);
+  border: 2px solid var(--grey-brown);
+  transition: all 0.3s ease;
+}
+
+.peninsular-card:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 8px 20px rgba(0,0,0,0.1);
+  border-color: var(--azure);
+}
+
+.peninsular-button-primary {
+  background-color: var(--azure);
+  color: var(--orange);
+  font-family: var(--font-primary);
+  font-weight: 500;
+  transition: all 0.3s ease;
+}
+
+.peninsular-button-primary:hover {
+  background-color: var(--dark-olive);
+  color: var(--orange);
+}
+
+.peninsular-button-secondary {
+  background-color: var(--grey-brown);
+  color: var(--orange);
+  font-family: var(--font-primary);
+  font-weight: 500;
+  transition: all 0.3s ease;
+}
+
+.peninsular-button-secondary:hover {
+  background-color: var(--dark-grey-brown);
+  color: var(--orange);
 }

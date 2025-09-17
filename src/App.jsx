@@ -7,16 +7,15 @@ import { Tabs, TabsContent, TabsList, TabsTrigger } from '@/components/ui/tabs.j
 import { Leaf, Sun, Droplets, Home, Users, Phone, Mail, MapPin, Moon, Calendar, Calculator, Image, ChevronRight } from 'lucide-react'
 import './App.css'
 
-// Brand Colors from Pinterest Board
+// Brand Colors
 const brandColors = {
-  oceanBlue: '#2B5F7F',
-  deepBlue: '#1A4A5C',
-  botanicalRed: '#8B4B5C',
-  darkGreen: '#2D4A3A',
-  sage: '#7A8471',
-  cream: '#F4E6D1',
-  warmBeige: '#E8D5B7',
-  earthBrown: '#6B5B47'
+  pastelGreyOrange: '#d8c09a',
+  greyBrown: '#6f6648',
+  darkOlive: '#5c622a',
+  azure: '#104e7f',
+  orange: '#fff0d3',
+  darkGreyBrown: '#553f24',
+  greyYellow: '#bdb499'
 }
 
 // Farmer Icon Component
@@ -48,19 +47,19 @@ const BiodynamicCalendar = ({ language }) => {
 
   useEffect(() => {
     // Simulate lunar phase calculation
-    const phases = ['new', 'waxing', 'full', 'waning']
+    const phases = ['full', 'waning', 'new', 'waxing']
     const recommendations = {
       es: {
-        new: 'Luna Nueva: Tiempo de siembra de raíces y tubérculos. Aplicar preparado 500.',
-        waxing: 'Luna Creciente: Ideal para siembra de hojas verdes. Preparar compost biodinámico.',
-        full: 'Luna Llena: Cosecha de frutos y aplicación de preparado 501 al amanecer.',
-        waning: 'Luna Menguante: Poda y preparación de preparados herbales 502-507.'
+        full: 'Luna Llena - Sep 7: Eclipse Lunar en Piscis. Momento de máxima energía cósmica. Cosechar hierbas medicinales. Evitar siembras hasta Sep 9.',
+        waning: 'Luna Menguante - Sep 14: Cuarto Menguante en Géminis. Tiempo ideal para poda y preparación de terreno. Trabajar con plantas de raíz.',
+        new: 'Luna Nueva - Sep 21: Eclipse Solar en Virgo. Nuevo ciclo de siembra. Planificar próximas cosechas y preparar semilleros.',
+        waxing: 'Luna Creciente - Sep 29: Cuarto Creciente en Capricornio. Energía ascendente para siembra de hojas verdes y acelgas.'
       },
       en: {
-        new: 'New Moon: Time for sowing roots and tubers. Apply preparation 500.',
-        waxing: 'Waxing Moon: Ideal for sowing leafy greens. Prepare biodynamic compost.',
-        full: 'Full Moon: Harvest fruits and apply preparation 501 at dawn.',
-        waning: 'Waning Moon: Pruning and preparation of herbal preparations 502-507.'
+        full: 'Full Moon - Sep 7: Lunar Eclipse in Pisces. Peak cosmic energy moment. Harvest medicinal herbs. Avoid sowing until Sep 9.',
+        waning: 'Waning Moon - Sep 14: Last Quarter in Gemini. Ideal time for pruning and soil preparation. Work with root plants.',
+        new: 'New Moon - Sep 21: Solar Eclipse in Virgo. New sowing cycle. Plan next harvests and prepare seedbeds.',
+        waxing: 'Waxing Moon - Sep 29: First Quarter in Capricorn. Rising energy for sowing leafy greens and chard.'
       }
     }
     
@@ -68,9 +67,9 @@ const BiodynamicCalendar = ({ language }) => {
   }, [currentPhase, language])
 
   return (
-    <Card className="border-2" style={{ borderColor: brandColors.sage, backgroundColor: brandColors.cream }}>
+    <Card className="border-2" style={{ borderColor: brandColors.darkOlive, backgroundColor: brandColors.orange }}>
       <CardHeader>
-        <CardTitle className="flex items-center gap-2" style={{ color: brandColors.deepBlue }}>
+        <CardTitle className="flex items-center gap-2" style={{ color: brandColors.azure }}>
           <Moon className="h-5 w-5" />
           {language === 'es' ? 'Calendario Biodinámico' : 'Biodynamic Calendar'}
         </CardTitle>
@@ -78,17 +77,17 @@ const BiodynamicCalendar = ({ language }) => {
       <CardContent>
         <div className="text-center mb-4">
           <div className="w-16 h-16 mx-auto mb-2 rounded-full flex items-center justify-center" 
-               style={{ backgroundColor: brandColors.sage }}>
-            <Moon className="h-8 w-8" style={{ color: brandColors.cream }} />
+               style={{ backgroundColor: brandColors.darkOlive }}>
+            <Moon className="h-8 w-8" style={{ color: brandColors.orange }} />
           </div>
-          <p className="text-sm" style={{ color: brandColors.earthBrown }}>
+          <p className="text-sm" style={{ color: brandColors.darkGreyBrown }}>
             {recommendation}
           </p>
         </div>
         <Button 
           size="sm" 
           className="w-full"
-          style={{ backgroundColor: brandColors.botanicalRed, color: brandColors.cream }}
+          style={{ backgroundColor: brandColors.greyBrown, color: brandColors.orange }}
           onClick={() => {
             const phases = ['new', 'waxing', 'full', 'waning']
             const currentIndex = phases.indexOf(currentPhase)
@@ -171,19 +170,19 @@ const SustainabilityAssessment = ({ language }) => {
 
   if (showResults) {
     return (
-      <Card className="border-2" style={{ borderColor: brandColors.oceanBlue, backgroundColor: brandColors.warmBeige }}>
+      <Card className="border-2" style={{ borderColor: brandColors.azure, backgroundColor: brandColors.greyYellow }}>
         <CardHeader>
-          <CardTitle style={{ color: brandColors.deepBlue }}>
+          <CardTitle style={{ color: brandColors.azure }}>
             {language === 'es' ? 'Tu Nivel de Soberanía' : 'Your Sovereignty Level'}
           </CardTitle>
         </CardHeader>
         <CardContent>
           <div className="text-center mb-4">
-            <div className="text-4xl font-bold mb-2" style={{ color: brandColors.botanicalRed }}>
+            <div className="text-4xl font-bold mb-2" style={{ color: brandColors.greyBrown }}>
               {score}%
             </div>
             <Progress value={score} className="mb-4" />
-            <p className="text-sm mb-4" style={{ color: brandColors.earthBrown }}>
+            <p className="text-sm mb-4" style={{ color: brandColors.darkGreyBrown }}>
               {language === 'es' 
                 ? score > 70 ? 'Excelente nivel de autosuficiencia' : score > 40 ? 'Buen progreso hacia la soberanía' : 'Gran potencial de mejora'
                 : score > 70 ? 'Excellent level of self-sufficiency' : score > 40 ? 'Good progress toward sovereignty' : 'Great potential for improvement'
@@ -191,7 +190,7 @@ const SustainabilityAssessment = ({ language }) => {
             </p>
             <Button 
               onClick={resetAssessment}
-              style={{ backgroundColor: brandColors.sage, color: brandColors.cream }}
+              style={{ backgroundColor: brandColors.darkOlive, color: brandColors.orange }}
             >
               {language === 'es' ? 'Evaluar de Nuevo' : 'Assess Again'}
             </Button>
@@ -202,19 +201,19 @@ const SustainabilityAssessment = ({ language }) => {
   }
 
   return (
-    <Card className="border-2" style={{ borderColor: brandColors.oceanBlue, backgroundColor: brandColors.warmBeige }}>
+    <Card className="border-2" style={{ borderColor: brandColors.azure, backgroundColor: brandColors.greyYellow }}>
       <CardHeader>
-        <CardTitle className="flex items-center gap-2" style={{ color: brandColors.deepBlue }}>
+        <CardTitle className="flex items-center gap-2" style={{ color: brandColors.azure }}>
           <Calculator className="h-5 w-5" />
           {language === 'es' ? 'Evaluación de Sustentabilidad' : 'Sustainability Assessment'}
         </CardTitle>
-        <CardDescription style={{ color: brandColors.earthBrown }}>
+        <CardDescription style={{ color: brandColors.darkGreyBrown }}>
           {language === 'es' ? `Pregunta ${currentQuestion + 1} de ${questions[language].length}` : `Question ${currentQuestion + 1} of ${questions[language].length}`}
         </CardDescription>
       </CardHeader>
       <CardContent>
         <div className="mb-4">
-          <h3 className="text-lg font-medium mb-4" style={{ color: brandColors.deepBlue }}>
+          <h3 className="text-lg font-medium mb-4" style={{ color: brandColors.azure }}>
             {questions[language][currentQuestion].question}
           </h3>
           <div className="space-y-2">
@@ -225,8 +224,8 @@ const SustainabilityAssessment = ({ language }) => {
                 className="w-full justify-start"
                 onClick={() => handleAnswer(index)}
                 style={{ 
-                  borderColor: brandColors.sage,
-                  color: brandColors.earthBrown
+                  borderColor: brandColors.darkOlive,
+                  color: brandColors.darkGreyBrown
                 }}
               >
                 {option}
@@ -281,9 +280,9 @@ const ProjectGallery = ({ language }) => {
   }
 
   return (
-    <Card className="border-2" style={{ borderColor: brandColors.botanicalRed, backgroundColor: brandColors.cream }}>
+    <Card className="border-2" style={{ borderColor: brandColors.greyBrown, backgroundColor: brandColors.orange }}>
       <CardHeader>
-        <CardTitle className="flex items-center gap-2" style={{ color: brandColors.deepBlue }}>
+        <CardTitle className="flex items-center gap-2" style={{ color: brandColors.azure }}>
           <Image className="h-5 w-5" />
           {language === 'es' ? 'Proyectos Realizados' : 'Completed Projects'}
         </CardTitle>
@@ -300,14 +299,14 @@ const ProjectGallery = ({ language }) => {
           {projects[language].map((project, index) => (
             <TabsContent key={index} value={index.toString()}>
               <div className="space-y-3">
-                <h3 className="font-semibold" style={{ color: brandColors.deepBlue }}>
+                <h3 className="font-semibold" style={{ color: brandColors.azure }}>
                   {project.title}
                 </h3>
-                <p className="text-sm" style={{ color: brandColors.earthBrown }}>
+                <p className="text-sm" style={{ color: brandColors.darkGreyBrown }}>
                   {project.description}
                 </p>
-                <div className="p-3 rounded" style={{ backgroundColor: brandColors.sage + '20' }}>
-                  <p className="text-sm font-medium" style={{ color: brandColors.botanicalRed }}>
+                <div className="p-3 rounded" style={{ backgroundColor: brandColors.darkOlive + '20' }}>
+                  <p className="text-sm font-medium" style={{ color: brandColors.greyBrown }}>
                     {language === 'es' ? 'Resultados:' : 'Results:'} {project.results}
                   </p>
                 </div>
@@ -327,52 +326,53 @@ function App() {
     es: {
       nav: {
         services: 'Servicios',
-        about: 'Nosotros',
-        contact: 'Contacto',
-        tools: 'Herramientas'
+        about: 'Filosofía',
+        tools: 'Herramientas',
+        store: 'Tienda',
+        contact: 'Contacto'
       },
       hero: {
         title: 'PENINSULAR',
-        subtitle: 'Consultoría Sustentable',
-        description: 'Creamos santuarios autosuficientes que te liberan del sistema convencional. Aplicamos metodologías biodinámicas de Rudolf Steiner, sabiduría maya ancestral y tecnología regenerativa para diseñar tu independencia total en armonía con los ritmos cósmicos y la tierra sagrada de Yucatán.',
-        cta: 'Iniciar Soberanía'
+        subtitle: 'Soluciones Regenerativas Personalizadas',
+        description: 'Diseñamos, desarrollamos y ejecutamos soluciones regenerativas únicas para cada cliente. Combinamos permacultura, tecnologías innovadoras y metodologías sustentables para crear sistemas personalizados que se adaptan a tu infraestructura, familia, objetivos y ubicación geográfica específica.',
+        cta: 'Explorar Soluciones'
       },
       services: {
         title: 'Nuestros Servicios',
-        subtitle: 'Metodologías biodinámicas y diseño consciente para la soberanía alimentaria',
-        starter: {
-          title: 'Bio-Starter',
-          description: 'Evaluación integral de tu espacio aplicando principios de Rudolf Steiner. Incluye análisis de suelo biodinámico, calendario lunar personalizado, y plan de transición hacia la autosuficiencia. Perfecto para iniciar tu desconexión del sistema convencional.',
-          details: '• Análisis biodinámico del terreno\n• Calendario lunar personalizado\n• Plan de siembra estacional\n• Consulta de 3 horas + seguimiento'
+        subtitle: 'Soluciones regenerativas personalizadas para cada cliente y ubicación',
+        assessment: {
+          title: 'Evaluación & Diseño',
+          description: 'Análisis integral de tu sitio, familia y objetivos para crear un plan regenerativo personalizado. Combinamos permacultura, análisis climático y evaluación de recursos para diseñar sistemas únicos adaptados a tus necesidades específicas.',
+          details: '• Análisis de sitio y recursos\n• Evaluación de necesidades familiares\n• Diseño de permacultura personalizado\n• Plan de implementación por fases\n• Consulta de 4 horas + informe detallado'
         },
-        design: {
-          title: 'Diseño Holístico',
-          description: 'Arquitectura sagrada y paisajismo regenerativo adaptado al clima extremo de Yucatán. Integramos permacultura, captación de agua, energía solar y diseño bioclimático para crear tu santuario autosuficiente con conciencia espiritual.',
-          details: '• Diseño arquitectónico bioclimático\n• Sistema de permacultura integral\n• Captación y filtrado de agua\n• Energía renovable off-grid\n• Gestión de proyecto 6-12 meses'
+        implementation: {
+          title: 'Implementación Integral',
+          description: 'Construcción y establecimiento de sistemas regenerativos completos. Desde producción de alimentos hasta energía renovable, creamos infraestructura sustentable que evoluciona con tus necesidades y se adapta a tu ubicación geográfica.',
+          details: '• Sistemas de producción de alimentos\n• Infraestructura de agua y energía\n• Tecnología inteligente integrada\n• Capacitación y transferencia de conocimiento\n• Gestión de proyecto 6-18 meses'
         },
-        transformation: {
-          title: 'Transformación Soberana',
-          description: 'Revolución completa hacia la independencia total. Desde huertos biodinámicos hasta sistemas off-grid, creamos tu ecosistema autosuficiente. Incluye formación en metodologías Steiner, manejo de crisis climáticas y soberanía alimentaria permanente.',
-          details: '• Implementación llave en mano\n• Formación en biodynamia avanzada\n• Sistemas de emergencia climática\n• Soberanía alimentaria completa\n• Acompañamiento 12-24 meses'
+        optimization: {
+          title: 'Optimización Continua',
+          description: 'Monitoreo, ajuste y mejora continua de tus sistemas regenerativos. Utilizamos tecnología IoT, análisis de datos y metodologías innovadoras para maximizar la eficiencia y productividad de tu ecosistema personalizado.',
+          details: '• Monitoreo con tecnología IoT\n• Análisis de rendimiento y optimización\n• Actualizaciones tecnológicas\n• Soporte técnico continuo\n• Membresía comunitaria incluida'
         }
       },
       features: {
         title: 'Nuestra Propuesta Única',
-        biodynamic: {
-          title: 'Agricultura Biodinámica',
-          description: 'Aplicamos las preparaciones biodinámicas de Steiner (500-508) adaptadas al suelo calcáreo yucateco. Trabajamos con ritmos cósmicos, compostaje vivo y preparados herbales para regenerar la tierra y crear alimentos con fuerza vital superior.'
+        innovation: {
+          title: 'Innovación Personalizada',
+          description: 'Cada proyecto es único. Combinamos múltiples metodologías regenerativas - permacultura, biodynamia, tecnologías emergentes - para crear soluciones específicas que se adaptan perfectamente a tu familia, ubicación y objetivos a largo plazo.'
         },
-        climate: {
-          title: 'Adaptación Climática',
-          description: 'Diseñamos sistemas resilientes para huracanes, sequías extremas y calor intenso. Incluye captación de agua de lluvia, refugios naturales, cultivos resistentes y protocolos de emergencia para mantener la autosuficiencia en cualquier crisis.'
+        methodology: {
+          title: 'Metodologías Flexibles',
+          description: 'No nos limitamos a una sola técnica. Seleccionamos y combinamos las mejores prácticas de permacultura, agricultura regenerativa, biodynamia y tecnologías sustentables según las necesidades específicas de cada cliente y sitio.'
         },
         technology: {
-          title: 'Tecnología Sustentable',
-          description: 'Sistemas solares off-grid, biodigestores, filtros de agua naturales, refrigeración subterránea y arquitectura bioclimática. Tecnología que te libera de la dependencia energética y te conecta con los ciclos naturales.'
+          title: 'Tecnología Inteligente',
+          description: 'Integramos IoT, automatización, monitoreo de datos y tecnologías emergentes para optimizar el rendimiento de tus sistemas. Tecnología que aprende y se adapta a los patrones únicos de tu ecosistema regenerativo.'
         },
-        holistic: {
-          title: 'Enfoque Holístico',
-          description: 'Integramos conocimiento maya ancestral, principios antroposóficos de Steiner, permacultura moderna y conciencia espiritual. Cada proyecto honra la conexión sagrada entre humano, tierra y cosmos para crear verdadera abundancia.'
+        community: {
+          title: 'Ecosistema Comunitario',
+          description: 'Construimos más que proyectos individuales - creamos una red de clientes, proveedores e innovadores que comparten conocimientos, recursos y experiencias para acelerar la transición hacia un futuro regenerativo.'
         }
       },
       tools: {
@@ -389,52 +389,53 @@ function App() {
     en: {
       nav: {
         services: 'Services',
-        about: 'About',
-        contact: 'Contact',
-        tools: 'Tools'
+        about: 'Philosophy',
+        tools: 'Tools',
+        store: 'Store',
+        contact: 'Contact'
       },
       hero: {
         title: 'PENINSULAR',
-        subtitle: 'Sustainable Consulting',
-        description: 'We create self-sufficient sanctuaries that liberate you from conventional systems. Applying Rudolf Steiner\'s biodynamic methodologies, ancestral Mayan wisdom, and regenerative technology to design your total independence in harmony with cosmic rhythms and Yucatan\'s sacred land.',
-        cta: 'Begin Sovereignty'
+        subtitle: 'Personalized Regenerative Solutions',
+        description: 'We design, develop and execute unique regenerative solutions for each client. We combine permaculture, innovative technologies and sustainable methodologies to create personalized systems that adapt to your specific infrastructure, family, objectives and geographic location.',
+        cta: 'Explore Solutions'
       },
       services: {
         title: 'Our Services',
-        subtitle: 'Biodynamic methodologies and conscious design for food sovereignty',
+        subtitle: 'Design, development and execution of comprehensive sustainable solutions',
         starter: {
           title: 'Bio-Starter',
-          description: 'Comprehensive space assessment applying Rudolf Steiner principles. Includes biodynamic soil analysis, personalized lunar calendar, and transition plan toward self-sufficiency. Perfect for beginning your disconnection from conventional systems.',
-          details: '• Biodynamic terrain analysis\n• Personalized lunar calendar\n• Seasonal planting plan\n• 3-hour consultation + follow-up'
+          description: 'Comprehensive assessment applying Rudolf Steiner\'s anthroposophical principles. Includes living soil analysis, cosmic calendar with preparations 500-501 applications, and transition plan toward a self-sufficient agricultural organism that respects biological and cosmic rhythms.',
+          details: '• Biodynamic terrain analysis\n• Cosmic calendar and preparations 500-501\n• Living agricultural organism plan\n• 3-hour consultation + follow-up'
         },
         design: {
           title: 'Holistic Design',
-          description: 'Sacred architecture and regenerative landscaping adapted to Yucatan\'s extreme climate. We integrate permaculture, water harvesting, solar energy, and bioclimatic design to create your self-sufficient sanctuary with spiritual consciousness.',
+          description: 'Sacred architecture and regenerative landscaping adapted to local climate. We integrate permaculture, water harvesting, solar energy, and bioclimatic design to create your self-sufficient sanctuary with spiritual consciousness.',
           details: '• Bioclimatic architectural design\n• Integral permaculture system\n• Water capture and filtration\n• Off-grid renewable energy\n• 6-12 month project management'
         },
         transformation: {
-          title: 'Sovereign Transformation',
-          description: 'Complete revolution toward total independence. From biodynamic gardens to off-grid systems, we create your self-sufficient ecosystem. Includes Steiner methodology training, climate crisis management, and permanent food sovereignty.',
-          details: '• Turnkey implementation\n• Advanced biodynamic training\n• Climate emergency systems\n• Complete food sovereignty\n• 12-24 month accompaniment'
+          title: 'Complete Transformation',
+          description: 'Transformation toward a complete biodynamic agricultural organism. Includes on-site production of the nine preparations (500-507), cosmic rhythm implementation, applied anthroposophy training, and development of agriculture as artistic expression that goes beyond mechanical farming.',
+          details: '• Turnkey implementation\n• Production of preparations 500-507\n• Applied anthroposophy training\n• Agriculture as creative art\n• 12-24 month accompaniment'
         }
       },
       features: {
         title: 'Our Unique Approach',
         biodynamic: {
-          title: 'Biodynamic Agriculture',
-          description: 'We apply Steiner\'s biodynamic preparations (500-508) adapted to Yucatecan limestone soil. Working with cosmic rhythms, living compost, and herbal preparations to regenerate earth and create foods with superior life force.'
+          title: 'Regenerative Systems',
+          description: 'We integrate biodynamic agriculture, permaculture, renewable energy systems, and comprehensive water management. We design complete ecosystems that self-regulate and improve over time, creating sustainable abundance for the long term.'
         },
         climate: {
           title: 'Climate Adaptation',
-          description: 'We design resilient systems for hurricanes, extreme droughts, and intense heat. Includes rainwater harvesting, natural shelters, resistant crops, and emergency protocols to maintain self-sufficiency through any crisis.'
+          description: 'We develop resilient solutions for hurricanes, extreme droughts, and intense heat. Includes water harvesting systems, natural shelters, backup energy, and emergency protocols to maintain self-sufficiency in any climate crisis.'
         },
         technology: {
-          title: 'Sustainable Technology',
-          description: 'Off-grid solar systems, biodigesters, natural water filters, underground cooling, and bioclimatic architecture. Technology that frees you from energy dependence and connects you with natural cycles.'
+          title: 'Advanced Technology',
+          description: 'We implement intelligent solar systems, IoT automation, advanced water filtration, geothermal cooling, and bioclimatic architecture. Technology that optimizes resources and connects you with natural cycles.'
         },
         holistic: {
-          title: 'Holistic Approach',
-          description: 'We integrate ancestral Mayan knowledge, Steiner\'s anthroposophical principles, modern permaculture, and spiritual consciousness. Each project honors the sacred connection between human, earth, and cosmos to create true abundance.'
+          title: 'Integral Design',
+          description: 'We combine modern engineering, ancestral wisdom, cosmic principles, and spiritual consciousness. Each project is designed as a living organism that evolves and adapts, creating true sovereignty and regenerative abundance.'
         }
       },
       tools: {
@@ -454,35 +455,35 @@ function App() {
 
   return (
     <div className="min-h-screen" style={{ 
-      background: `linear-gradient(135deg, ${brandColors.oceanBlue}15 0%, ${brandColors.sage}15 100%)` 
+      background: `linear-gradient(135deg, ${brandColors.azure}15 0%, ${brandColors.darkOlive}15 100%)` 
     }}>
       {/* Navigation */}
       <nav className="backdrop-blur-sm shadow-sm sticky top-0 z-50" style={{ 
-        backgroundColor: `${brandColors.cream}95` 
+        backgroundColor: `${brandColors.orange}95` 
       }}>
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="flex justify-between items-center h-16">
             <div className="flex items-center space-x-3">
-              <FarmerIcon className="h-10 w-10" style={{ color: brandColors.earthBrown }} />
-              <span className="text-2xl font-bold" style={{ color: brandColors.deepBlue }}>
+              <FarmerIcon className="h-10 w-10" style={{ color: brandColors.darkGreyBrown }} />
+              <span className="text-2xl font-bold" style={{ color: brandColors.azure }}>
                 PENINSULAR
               </span>
             </div>
             <div className="hidden md:flex items-center space-x-8">
               <a href="#services" className="transition-colors hover:opacity-80" 
-                 style={{ color: brandColors.earthBrown }}>
+                 style={{ color: brandColors.darkGreyBrown }}>
                 {t.nav.services}
               </a>
               <a href="#about" className="transition-colors hover:opacity-80" 
-                 style={{ color: brandColors.earthBrown }}>
+                 style={{ color: brandColors.darkGreyBrown }}>
                 {t.nav.about}
               </a>
               <a href="#tools" className="transition-colors hover:opacity-80" 
-                 style={{ color: brandColors.earthBrown }}>
+                 style={{ color: brandColors.darkGreyBrown }}>
                 {t.nav.tools}
               </a>
               <a href="#contact" className="transition-colors hover:opacity-80" 
-                 style={{ color: brandColors.earthBrown }}>
+                 style={{ color: brandColors.darkGreyBrown }}>
                 {t.nav.contact}
               </a>
               <Button 
@@ -490,8 +491,8 @@ function App() {
                 size="sm"
                 onClick={() => setLanguage(language === 'es' ? 'en' : 'es')}
                 style={{ 
-                  borderColor: brandColors.sage,
-                  color: brandColors.earthBrown
+                  borderColor: brandColors.darkOlive,
+                  color: brandColors.darkGreyBrown
                 }}
               >
                 {language === 'es' ? 'EN' : 'ES'}
@@ -506,31 +507,31 @@ function App() {
         <div 
           className="absolute inset-0 opacity-20"
           style={{
-            backgroundImage: `radial-gradient(circle at 25% 25%, ${brandColors.botanicalRed}20 0%, transparent 50%), 
-                             radial-gradient(circle at 75% 75%, ${brandColors.oceanBlue}20 0%, transparent 50%)`,
+            backgroundImage: `radial-gradient(circle at 25% 25%, ${brandColors.greyBrown}20 0%, transparent 50%), 
+                             radial-gradient(circle at 75% 75%, ${brandColors.azure}20 0%, transparent 50%)`,
           }}
         />
         
         <div className="max-w-7xl mx-auto text-center relative z-10">
           <div className="mb-8">
-            <FarmerIcon className="h-20 w-20 mx-auto mb-6" style={{ color: brandColors.earthBrown }} />
+            <FarmerIcon className="h-20 w-20 mx-auto mb-6" style={{ color: brandColors.darkGreyBrown }} />
           </div>
           
           <h1 className="text-6xl md:text-8xl font-bold mb-4" 
               style={{ 
-                color: brandColors.deepBlue,
-                textShadow: `2px 2px 4px ${brandColors.cream}50`
+                color: brandColors.azure,
+                textShadow: `2px 2px 4px ${brandColors.orange}50`
               }}>
             {t.hero.title}
           </h1>
           
           <p className="text-xl md:text-2xl font-medium mb-6" 
-             style={{ color: brandColors.sage }}>
+             style={{ color: brandColors.darkOlive }}>
             {t.hero.subtitle}
           </p>
           
           <p className="text-lg max-w-4xl mx-auto mb-8 leading-relaxed" 
-             style={{ color: brandColors.earthBrown }}>
+             style={{ color: brandColors.darkGreyBrown }}>
             {t.hero.description}
           </p>
           
@@ -538,8 +539,8 @@ function App() {
             size="lg" 
             className="px-8 py-3 text-lg font-medium transition-all hover:scale-105"
             style={{ 
-              backgroundColor: brandColors.botanicalRed,
-              color: brandColors.cream,
+              backgroundColor: brandColors.greyBrown,
+              color: brandColors.orange,
               border: 'none'
             }}
           >
@@ -550,13 +551,13 @@ function App() {
 
       {/* Services Section */}
       <section id="services" className="py-20 px-4 sm:px-6 lg:px-8" 
-               style={{ backgroundColor: brandColors.cream }}>
+               style={{ backgroundColor: brandColors.orange }}>
         <div className="max-w-7xl mx-auto">
           <div className="text-center mb-16">
-            <h2 className="text-4xl font-bold mb-4" style={{ color: brandColors.deepBlue }}>
+            <h2 className="text-4xl font-bold mb-4" style={{ color: brandColors.azure }}>
               {t.services.title}
             </h2>
-            <p className="text-xl" style={{ color: brandColors.earthBrown }}>
+            <p className="text-xl" style={{ color: brandColors.darkGreyBrown }}>
               {t.services.subtitle}
             </p>
           </div>
@@ -564,19 +565,19 @@ function App() {
           <div className="grid md:grid-cols-3 gap-8">
             <Card className="border-2 hover:border-opacity-60 transition-all hover:shadow-lg" 
                   style={{ 
-                    borderColor: brandColors.sage,
-                    backgroundColor: brandColors.warmBeige 
+                    borderColor: brandColors.darkOlive,
+                    backgroundColor: brandColors.greyYellow 
                   }}>
               <CardHeader>
-                <CardTitle className="text-xl" style={{ color: brandColors.deepBlue }}>
+                <CardTitle className="text-xl" style={{ color: brandColors.azure }}>
                   {t.services.starter.title}
                 </CardTitle>
               </CardHeader>
               <CardContent>
-                <CardDescription className="text-base mb-4" style={{ color: brandColors.earthBrown }}>
+                <CardDescription className="text-base mb-4" style={{ color: brandColors.darkGreyBrown }}>
                   {t.services.starter.description}
                 </CardDescription>
-                <div className="text-sm" style={{ color: brandColors.sage }}>
+                <div className="text-sm" style={{ color: brandColors.darkOlive }}>
                   {t.services.starter.details.split('\n').map((detail, index) => (
                     <div key={index}>{detail}</div>
                   ))}
@@ -586,20 +587,20 @@ function App() {
 
             <Card className="border-2 transition-all hover:shadow-lg transform hover:scale-105" 
                   style={{ 
-                    borderColor: brandColors.botanicalRed,
-                    backgroundColor: brandColors.cream,
-                    boxShadow: `0 4px 20px ${brandColors.botanicalRed}20`
+                    borderColor: brandColors.greyBrown,
+                    backgroundColor: brandColors.orange,
+                    boxShadow: `0 4px 20px ${brandColors.greyBrown}20`
                   }}>
               <CardHeader>
-                <CardTitle className="text-xl" style={{ color: brandColors.deepBlue }}>
+                <CardTitle className="text-xl" style={{ color: brandColors.azure }}>
                   {t.services.design.title}
                 </CardTitle>
               </CardHeader>
               <CardContent>
-                <CardDescription className="text-base mb-4" style={{ color: brandColors.earthBrown }}>
+                <CardDescription className="text-base mb-4" style={{ color: brandColors.darkGreyBrown }}>
                   {t.services.design.description}
                 </CardDescription>
-                <div className="text-sm" style={{ color: brandColors.sage }}>
+                <div className="text-sm" style={{ color: brandColors.darkOlive }}>
                   {t.services.design.details.split('\n').map((detail, index) => (
                     <div key={index}>{detail}</div>
                   ))}
@@ -609,19 +610,19 @@ function App() {
 
             <Card className="border-2 hover:border-opacity-60 transition-all hover:shadow-lg" 
                   style={{ 
-                    borderColor: brandColors.oceanBlue,
-                    backgroundColor: brandColors.warmBeige 
+                    borderColor: brandColors.azure,
+                    backgroundColor: brandColors.greyYellow 
                   }}>
               <CardHeader>
-                <CardTitle className="text-xl" style={{ color: brandColors.deepBlue }}>
+                <CardTitle className="text-xl" style={{ color: brandColors.azure }}>
                   {t.services.transformation.title}
                 </CardTitle>
               </CardHeader>
               <CardContent>
-                <CardDescription className="text-base mb-4" style={{ color: brandColors.earthBrown }}>
+                <CardDescription className="text-base mb-4" style={{ color: brandColors.darkGreyBrown }}>
                   {t.services.transformation.description}
                 </CardDescription>
-                <div className="text-sm" style={{ color: brandColors.sage }}>
+                <div className="text-sm" style={{ color: brandColors.darkOlive }}>
                   {t.services.transformation.details.split('\n').map((detail, index) => (
                     <div key={index}>{detail}</div>
                   ))}
@@ -634,13 +635,13 @@ function App() {
 
       {/* Interactive Tools Section */}
       <section id="tools" className="py-20 px-4 sm:px-6 lg:px-8" 
-               style={{ backgroundColor: brandColors.warmBeige }}>
+               style={{ backgroundColor: brandColors.greyYellow }}>
         <div className="max-w-7xl mx-auto">
           <div className="text-center mb-16">
-            <h2 className="text-4xl font-bold mb-4" style={{ color: brandColors.deepBlue }}>
+            <h2 className="text-4xl font-bold mb-4" style={{ color: brandColors.azure }}>
               {t.tools.title}
             </h2>
-            <p className="text-xl" style={{ color: brandColors.earthBrown }}>
+            <p className="text-xl" style={{ color: brandColors.darkGreyBrown }}>
               {t.tools.subtitle}
             </p>
           </div>
@@ -656,68 +657,68 @@ function App() {
       {/* Features Section */}
       <section id="about" className="py-20 px-4 sm:px-6 lg:px-8" 
                style={{ 
-                 background: `linear-gradient(45deg, ${brandColors.sage}20 0%, ${brandColors.oceanBlue}20 100%)` 
+                 background: `linear-gradient(45deg, ${brandColors.darkOlive}20 0%, ${brandColors.azure}20 100%)` 
                }}>
         <div className="max-w-7xl mx-auto">
           <div className="text-center mb-16">
-            <h2 className="text-4xl font-bold mb-4" style={{ color: brandColors.deepBlue }}>
+            <h2 className="text-4xl font-bold mb-4" style={{ color: brandColors.azure }}>
               {t.features.title}
             </h2>
           </div>
           
           <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-8">
             <div className="text-center p-6 rounded-lg" 
-                 style={{ backgroundColor: `${brandColors.cream}90` }}>
+                 style={{ backgroundColor: `${brandColors.orange}90` }}>
               <div className="w-16 h-16 rounded-full flex items-center justify-center mx-auto mb-4" 
-                   style={{ backgroundColor: brandColors.sage }}>
-                <Leaf className="h-8 w-8" style={{ color: brandColors.cream }} />
+                   style={{ backgroundColor: brandColors.darkOlive }}>
+                <Leaf className="h-8 w-8" style={{ color: brandColors.orange }} />
               </div>
-              <h3 className="text-xl font-semibold mb-2" style={{ color: brandColors.deepBlue }}>
+              <h3 className="text-xl font-semibold mb-2" style={{ color: brandColors.azure }}>
                 {t.features.biodynamic.title}
               </h3>
-              <p style={{ color: brandColors.earthBrown }}>
+              <p style={{ color: brandColors.darkGreyBrown }}>
                 {t.features.biodynamic.description}
               </p>
             </div>
 
             <div className="text-center p-6 rounded-lg" 
-                 style={{ backgroundColor: `${brandColors.cream}90` }}>
+                 style={{ backgroundColor: `${brandColors.orange}90` }}>
               <div className="w-16 h-16 rounded-full flex items-center justify-center mx-auto mb-4" 
-                   style={{ backgroundColor: brandColors.oceanBlue }}>
-                <Sun className="h-8 w-8" style={{ color: brandColors.cream }} />
+                   style={{ backgroundColor: brandColors.azure }}>
+                <Sun className="h-8 w-8" style={{ color: brandColors.orange }} />
               </div>
-              <h3 className="text-xl font-semibold mb-2" style={{ color: brandColors.deepBlue }}>
+              <h3 className="text-xl font-semibold mb-2" style={{ color: brandColors.azure }}>
                 {t.features.climate.title}
               </h3>
-              <p style={{ color: brandColors.earthBrown }}>
+              <p style={{ color: brandColors.darkGreyBrown }}>
                 {t.features.climate.description}
               </p>
             </div>
 
             <div className="text-center p-6 rounded-lg" 
-                 style={{ backgroundColor: `${brandColors.cream}90` }}>
+                 style={{ backgroundColor: `${brandColors.orange}90` }}>
               <div className="w-16 h-16 rounded-full flex items-center justify-center mx-auto mb-4" 
-                   style={{ backgroundColor: brandColors.botanicalRed }}>
-                <Droplets className="h-8 w-8" style={{ color: brandColors.cream }} />
+                   style={{ backgroundColor: brandColors.greyBrown }}>
+                <Droplets className="h-8 w-8" style={{ color: brandColors.orange }} />
               </div>
-              <h3 className="text-xl font-semibold mb-2" style={{ color: brandColors.deepBlue }}>
+              <h3 className="text-xl font-semibold mb-2" style={{ color: brandColors.azure }}>
                 {t.features.technology.title}
               </h3>
-              <p style={{ color: brandColors.earthBrown }}>
+              <p style={{ color: brandColors.darkGreyBrown }}>
                 {t.features.technology.description}
               </p>
             </div>
 
             <div className="text-center p-6 rounded-lg" 
-                 style={{ backgroundColor: `${brandColors.cream}90` }}>
+                 style={{ backgroundColor: `${brandColors.orange}90` }}>
               <div className="w-16 h-16 rounded-full flex items-center justify-center mx-auto mb-4" 
-                   style={{ backgroundColor: brandColors.sage }}>
-                <Home className="h-8 w-8" style={{ color: brandColors.cream }} />
+                   style={{ backgroundColor: brandColors.darkOlive }}>
+                <Home className="h-8 w-8" style={{ color: brandColors.orange }} />
               </div>
-              <h3 className="text-xl font-semibold mb-2" style={{ color: brandColors.deepBlue }}>
+              <h3 className="text-xl font-semibold mb-2" style={{ color: brandColors.azure }}>
                 {t.features.holistic.title}
               </h3>
-              <p style={{ color: brandColors.earthBrown }}>
+              <p style={{ color: brandColors.darkGreyBrown }}>
                 {t.features.holistic.description}
               </p>
             </div>
@@ -727,23 +728,23 @@ function App() {
 
       {/* Contact Section */}
       <section id="contact" className="py-20 px-4 sm:px-6 lg:px-8" 
-               style={{ backgroundColor: brandColors.warmBeige }}>
+               style={{ backgroundColor: brandColors.greyYellow }}>
         <div className="max-w-4xl mx-auto text-center">
-          <h2 className="text-4xl font-bold mb-4" style={{ color: brandColors.deepBlue }}>
+          <h2 className="text-4xl font-bold mb-4" style={{ color: brandColors.azure }}>
             {t.contact.title}
           </h2>
-          <p className="text-xl mb-8" style={{ color: brandColors.earthBrown }}>
+          <p className="text-xl mb-8" style={{ color: brandColors.darkGreyBrown }}>
             {t.contact.subtitle}
           </p>
           
           <div className="flex flex-col md:flex-row justify-center items-center space-y-4 md:space-y-0 md:space-x-8 mb-8">
             <div className="flex items-center space-x-2">
-              <MapPin className="h-5 w-5" style={{ color: brandColors.botanicalRed }} />
-              <span style={{ color: brandColors.earthBrown }}>{t.contact.location}</span>
+              <MapPin className="h-5 w-5" style={{ color: brandColors.greyBrown }} />
+              <span style={{ color: brandColors.darkGreyBrown }}>{t.contact.location}</span>
             </div>
             <div className="flex items-center space-x-2">
-              <Mail className="h-5 w-5" style={{ color: brandColors.botanicalRed }} />
-              <span style={{ color: brandColors.earthBrown }}>info@peninsular.mx</span>
+              <Mail className="h-5 w-5" style={{ color: brandColors.greyBrown }} />
+              <span style={{ color: brandColors.darkGreyBrown }}>info@peninsular.mx</span>
             </div>
           </div>
           
@@ -751,8 +752,8 @@ function App() {
             size="lg" 
             className="px-8 py-3 text-lg font-medium transition-all hover:scale-105"
             style={{ 
-              backgroundColor: brandColors.oceanBlue,
-              color: brandColors.cream,
+              backgroundColor: brandColors.azure,
+              color: brandColors.orange,
               border: 'none'
             }}
           >
@@ -763,18 +764,18 @@ function App() {
 
       {/* Footer */}
       <footer className="py-12 px-4 sm:px-6 lg:px-8" 
-              style={{ backgroundColor: brandColors.deepBlue }}>
+              style={{ backgroundColor: brandColors.azure }}>
         <div className="max-w-7xl mx-auto text-center">
           <div className="flex items-center justify-center space-x-3 mb-4">
-            <FarmerIcon className="h-8 w-8" style={{ color: brandColors.cream }} />
-            <span className="text-2xl font-bold" style={{ color: brandColors.cream }}>
+            <FarmerIcon className="h-8 w-8" style={{ color: brandColors.orange }} />
+            <span className="text-2xl font-bold" style={{ color: brandColors.orange }}>
               PENINSULAR
             </span>
           </div>
-          <p className="mb-4" style={{ color: brandColors.sage }}>
+          <p className="mb-4" style={{ color: brandColors.darkOlive }}>
             {language === 'es' ? 'Vida Sustentable, Futuro Regenerativo' : 'Sustainable Living, Regenerative Future'}
           </p>
-          <p className="text-sm" style={{ color: brandColors.warmBeige }}>
+          <p className="text-sm" style={{ color: brandColors.greyYellow }}>
             © 2025 Peninsular Consultoría Sustentable. {language === 'es' ? 'Todos los derechos reservados.' : 'All rights reserved.'}
           </p>
         </div>
