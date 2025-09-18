@@ -1,0 +1,108 @@
+:root {
+  /* Brand Colors */
+  --pastel-grey-orange: #d8c09a;
+  --grey-brown: #6f6648;
+  --dark-olive: #5c622a;
+  --azure: #104e7f;
+  --orange: #fff0d3;
+  --dark-grey-brown: #553f24;
+  --grey-yellow: #bdb499;
+
+  /* Typography Scale */
+  --font-h1: 48px;
+  --font-h2: 36px;
+  --font-h3: 24px;
+  --font-h4: 20px;
+  --font-body-lg: 18px;
+  --font-body: 16px;
+  --font-body-sm: 14px;
+  --font-caption: 12px;
+
+  /* Spacing Scale */
+  --space-1: 8px;
+  --space-2: 16px;
+  --space-3: 24px;
+  --space-4: 32px;
+  --space-5: 48px;
+  --space-6: 64px;
+  --space-7: 96px;
+
+  /* Buttons */
+  --button-radius-primary: 8px;
+  --button-radius-secondary: 6px;
+  --button-height-primary: 48px;
+  --button-height-secondary: 40px;
+}
+
+@media (max-width: 768px) {
+  :root {
+    --font-h1: 36px;
+    --font-h2: 28px;
+    --font-h3: 20px;
+    --font-h4: 18px;
+  }
+}
+
+body {
+  font-family: 'Onest', Arial, sans-serif;
+  color: var(--grey-brown);
+  background: var(--orange);
+  margin: 0;
+  padding: 0;
+}
+
+h1, h2, h3, h4 {
+  font-family: 'Staatliches', 'Onest', Arial, sans-serif;
+  color: var(--dark-olive);
+  margin-bottom: var(--space-2);
+}
+
+h1 { font-size: var(--font-h1); }
+h2 { font-size: var(--font-h2); }
+h3 { font-size: var(--font-h3); }
+h4 { font-size: var(--font-h4); }
+
+.button-primary {
+  background: var(--azure);
+  color: #fff;
+  border-radius: var(--button-radius-primary);
+  height: var(--button-height-primary);
+  padding: 12px 24px;
+  font-family: 'Onest', Arial, sans-serif;
+  font-weight: 500;
+  font-size: 16px;
+  transition: background 0.3s ease, box-shadow 0.3s;
+}
+
+.button-primary:hover, .button-primary:focus {
+  background: var(--dark-olive);
+  box-shadow: 0 4px 16px 0 var(--pastel-grey-orange, #d8c09a);
+}
+
+.button-secondary {
+  background: var(--grey-yellow);
+  color: var(--grey-brown);
+  border-radius: var(--button-radius-secondary);
+  height: var(--button-height-secondary);
+  padding: 8px 16px;
+  font-family: 'Onest', Arial, sans-serif;
+  font-weight: 400;
+  font-size: 14px;
+  transition: background 0.3s ease, box-shadow 0.3s;
+}
+
+.button-secondary:hover, .button-secondary:focus {
+  background: var(--orange);
+  box-shadow: 0 2px 8px 0 var(--grey-brown, #6f6648);
+}
+
+img {
+  max-width: 100%;
+  height: auto;
+  border-radius: 8px;
+  transition: transform 0.3s cubic-bezier(.4,0,.2,1);
+}
+
+img:hover, img:focus {
+  transform: scale(1.05);
+}

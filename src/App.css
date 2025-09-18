@@ -1,9 +1,6 @@
 
-/* Import Google Fonts for Peninsular Brand */
-@import url('https://fonts.googleapis.com/css2?family=Onest:wght@100;200;300;400;500;600;700;800;900&display=swap');
-@import url('https://fonts.googleapis.com/css2?family=Staatliches&display=swap');
-@import url('https://fonts.googleapis.com/css2?family=Shrikhand&display=swap');
-
+/* Google Fonts already imported at the top: Onest, Staatliches, Shrikhand */
+@import url('https://fonts.googleapis.com/css2?family=Onest:wght@100;300;400;500;600;700&family=Shrikhand&family=Staatliches&display=swap');
 @import "tailwindcss";
 @import "tw-animate-css";
 
@@ -128,7 +125,7 @@
 
 
 
-/* Peninsular Brand Variables */
+/* Enhanced Peninsular Brand System */
 :root {
   /* Brand Colors */
   --pastel-grey-orange: #d8c09a;
@@ -138,76 +135,235 @@
   --orange: #fff0d3;
   --dark-grey-brown: #553f24;
   --grey-yellow: #bdb499;
-  
-  /* Typography */
-  --font-primary: 'Onest', sans-serif;
-  --font-headers: 'Staatliches', cursive;
-  --font-subheaders: 'Shrikhand', cursive;
+
+  /* Typography Scale */
+  --font-h1: 48px;
+  --font-h2: 36px;
+  --font-h3: 24px;
+  --font-h4: 20px;
+  --font-body-lg: 18px;
+  --font-body: 16px;
+  --font-body-sm: 14px;
+  --font-caption: 12px;
+
+  /* Spacing Scale */
+  --space-1: 8px;
+  --space-2: 16px;
+  --space-3: 24px;
+  --space-4: 32px;
+  --space-5: 48px;
+  --space-6: 64px;
+  --space-7: 96px;
+
+  /* Button Specs */
+  --button-radius-primary: 8px;
+  --button-radius-secondary: 6px;
+  --button-height-primary: 48px;
+  --button-height-secondary: 40px;
+
+  /* Grid breakpoints */
+  --max-width-desktop: 1200px;
+  --max-width-tablet: 768px;
+  --min-width-mobile: 375px;
 }
 
-/* Peninsular Typography */
-.peninsular-title {
-  font-family: var(--font-headers);
-  font-weight: 400;
-  color: var(--azure);
-  letter-spacing: 0.05em;
+@media (max-width: 768px) {
+  :root {
+    --font-h1: 36px;
+    --font-h2: 28px;
+    --font-h3: 20px;
+    --font-h4: 18px;
+  }
 }
 
-.peninsular-subtitle {
-  font-family: var(--font-primary);
-  font-weight: 100;
+/* Enhanced Typography */
+body {
+  font-family: 'Onest', Arial, sans-serif;
   color: var(--grey-brown);
-  letter-spacing: 0.1em;
-}
-
-.peninsular-subheader {
-  font-family: var(--font-subheaders);
-  font-weight: 400;
-  color: var(--grey-brown);
-}
-
-.peninsular-body {
-  font-family: var(--font-primary);
-  font-weight: 400;
+  background: var(--orange);
+  margin: 0;
+  padding: 0;
+  font-size: var(--font-body);
   line-height: 1.6;
+}
+
+h1, h2, h3, h4 {
+  font-family: 'Staatliches', 'Onest', Arial, sans-serif;
+  color: var(--dark-olive);
+  margin-bottom: var(--space-2);
+  letter-spacing: 0.02em;
+}
+
+h1 { font-size: var(--font-h1); }
+h2 { font-size: var(--font-h2); }
+h3 { font-size: var(--font-h3); }
+h4 { font-size: var(--font-h4); }
+
+.display {
+  font-family: 'Shrikhand', cursive;
+  color: var(--azure);
+  font-size: 56px;
+  letter-spacing: 0.03em;
+}
+
+/* Enhanced Buttons */
+.button-primary {
+  background: var(--azure);
+  color: #fff;
+  border-radius: var(--button-radius-primary);
+  height: var(--button-height-primary);
+  padding: 12px 24px;
+  font-family: 'Onest', Arial, sans-serif;
+  font-weight: 500;
+  font-size: 16px;
+  border: none;
+  cursor: pointer;
+  transition: background 0.3s ease, box-shadow 0.3s;
+  outline: none;
+}
+
+.button-primary:hover,
+.button-primary:focus {
+  background: var(--dark-olive);
+  box-shadow: 0 4px 16px 0 var(--pastel-grey-orange, #d8c09a);
+}
+
+.button-secondary {
+  background: var(--grey-yellow);
+  color: var(--grey-brown);
+  border-radius: var(--button-radius-secondary);
+  height: var(--button-height-secondary);
+  padding: 8px 16px;
+  font-family: 'Onest', Arial, sans-serif;
+  font-weight: 400;
+  font-size: 14px;
+  border: none;
+  cursor: pointer;
+  transition: background 0.3s, box-shadow 0.3s;
+  outline: none;
+}
+
+.button-secondary:hover,
+.button-secondary:focus {
+  background: var(--orange);
   color: var(--dark-grey-brown);
+  box-shadow: 0 2px 8px 0 var(--grey-brown, #6f6648);
 }
 
-/* Peninsular Components */
-.peninsular-card {
-  background: linear-gradient(135deg, var(--orange) 0%, var(--pastel-grey-orange) 100%);
-  border: 2px solid var(--grey-brown);
-  transition: all 0.3s ease;
+.button-primary:focus-visible,
+.button-secondary:focus-visible {
+  outline: 2px solid var(--azure);
+  outline-offset: 2px;
 }
 
-.peninsular-card:hover {
-  transform: translateY(-2px);
-  box-shadow: 0 8px 20px rgba(0,0,0,0.1);
-  border-color: var(--azure);
+/* Enhanced Cards */
+.card,
+.service-card {
+  background: #fff;
+  border-radius: 16px;
+  box-shadow: 0 2px 16px rgba(107, 89, 55, 0.08);
+  transition: transform 0.2s cubic-bezier(.4,0,.2,1), box-shadow 0.2s cubic-bezier(.4,0,.2,1);
 }
 
-.peninsular-button-primary {
-  background-color: var(--azure);
-  color: var(--orange);
-  font-family: var(--font-primary);
-  font-weight: 500;
-  transition: all 0.3s ease;
+.card:hover, .card:focus,
+.service-card:hover, .service-card:focus {
+  transform: translateY(-2px) scale(1.02);
+  box-shadow: 0 8px 32px rgba(107, 89, 55, 0.16);
 }
 
-.peninsular-button-primary:hover {
-  background-color: var(--dark-olive);
-  color: var(--orange);
+/* Enhanced Images */
+img,
+picture > img {
+  max-width: 100%;
+  height: auto;
+  border-radius: 8px;
+  transition: transform 0.3s cubic-bezier(.4,0,.2,1), box-shadow 0.3s;
+  display: block;
+  object-fit: cover;
 }
 
-.peninsular-button-secondary {
-  background-color: var(--grey-brown);
-  color: var(--orange);
-  font-family: var(--font-primary);
-  font-weight: 500;
-  transition: all 0.3s ease;
+img:hover, img:focus {
+  transform: scale(1.05);
+  box-shadow: 0 6px 32px 0 rgba(52, 66, 46, 0.10);
 }
 
-.peninsular-button-secondary:hover {
-  background-color: var(--dark-grey-brown);
-  color: var(--orange);
+img:focus-visible {
+  outline: 2px solid var(--azure);
+  outline-offset: 2px;
+}
+
+/* Enhanced Grid System */
+.container {
+  width: 100%;
+  max-width: var(--max-width-desktop);
+  margin: 0 auto;
+  padding: 0 var(--space-2);
+  box-sizing: border-box;
+}
+
+.grid {
+  display: grid;
+  gap: var(--space-4);
+}
+
+/* Accessibility Enhancements */
+:focus {
+  outline: 2px solid var(--azure);
+  outline-offset: 2px;
+}
+
+.visually-hidden {
+  position: absolute !important;
+  width: 1px;
+  height: 1px;
+  padding: 0;
+  margin: -1px;
+  overflow: hidden;
+  clip: rect(0,0,0,0);
+  border: 0;
+}
+
+/* Loading States */
+.skeleton {
+  background: linear-gradient(90deg, #ece9e6 25%, #f3f3f3 50%, #ece9e6 75%);
+  background-size: 400% 100%;
+  animation: skeleton-loading 1.2s ease-in-out infinite;
+  border-radius: 8px;
+}
+
+@keyframes skeleton-loading {
+  0% { background-position: 100% 0 }
+  100% { background-position: 0 0 }
+}
+
+.spinner {
+  border: 3px solid var(--pastel-grey-orange);
+  border-top: 3px solid var(--azure);
+  border-radius: 50%;
+  width: 32px;
+  height: 32px;
+  animation: spin 1s linear infinite;
+  margin: auto;
+}
+
+@keyframes spin {
+  0% { transform: rotate(0deg);}
+  100% { transform: rotate(360deg);}
+}
+
+/* Animations */
+.fade-in {
+  opacity: 0;
+  animation: fadeIn 0.5s forwards;
+}
+@keyframes fadeIn {
+  to { opacity: 1; }
+}
+
+.fade-out {
+  opacity: 1;
+  animation: fadeOut 0.5s forwards;
+}
+@keyframes fadeOut {
+  to { opacity: 0; }
 }
